@@ -16,6 +16,8 @@ public class Main {
 			e.printStackTrace();
 			return; // Si no se pueden crear las tablas, no hace falta iniciar la UI
 		}
+		
+		// Comentario de prueba
 
 		// Iniciar la UI
 		SwingUtilities.invokeLater(() -> {
