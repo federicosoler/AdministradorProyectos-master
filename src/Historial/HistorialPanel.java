@@ -15,16 +15,16 @@ import Tarea.TareaService;
 public class HistorialPanel extends GenericPanel {
 	private HistorialService historialService;
 	private TareaService tareaService;
-	private EmpleadoService empleadoService;	
-	
+	private EmpleadoService empleadoService;
+
 	private JComboBox<String> tareaComboBox;
 	private JComboBox<String> empleadoComboBox;
 	private JComboBox<String> estadoComboBox;
-	
+
 	private String[] nombreColumnas = { "ID", "Tarea", "Empleado", "Estado", "Fecha Ajuste", "Horas Reales" };
 
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	private JTextField horasRealesField;
 
 	public HistorialPanel(PanelManager panelManager) {

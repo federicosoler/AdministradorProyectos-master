@@ -17,7 +17,7 @@ public class AfiliacionPanel extends GenericPanel {
 
 	private JComboBox<String> tareaComboBox;
 	private JComboBox<String> proyectoComboBox;
-	
+
 	private String[] nombreColumnas = { "ID", "Tarea", "Proyecto" };
 
 	public AfiliacionPanel(PanelManager panelManager) {

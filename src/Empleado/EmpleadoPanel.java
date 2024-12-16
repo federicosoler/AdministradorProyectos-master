@@ -19,7 +19,7 @@ public class EmpleadoPanel extends GenericPanel {
 
 		// Configurar tabla (NORTH)
 		configurarTabla(nombreColumnas);
-		
+
 		// Configurar campos (CENTER)
 		campos = configurarCamposEntrada(nombreColumnas);
 

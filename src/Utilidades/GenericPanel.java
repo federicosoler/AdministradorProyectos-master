@@ -74,7 +74,7 @@ public abstract class GenericPanel extends JPanel {
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// Método para configurar los botones (SOUTH)
 	protected void configurarBotones() {
-		
+
 		// Botón GUARDAR (Crud o crUd)
 		JButton guardarButton = new JButton("Guardar");
 		guardarButton.addActionListener(e -> {
@@ -151,7 +151,8 @@ public abstract class GenericPanel extends JPanel {
 	}
 
 	// ------------------------------------------------------------------------------------------------------------------------------
-	// Métodos abstractos que obligatoriamente deben implementar las subclases (CRUD)
+	// Métodos abstractos que obligatoriamente deben implementar las subclases
+	// (CRUD)
 	protected abstract void readAll();
 
 	protected abstract void create();

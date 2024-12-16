@@ -18,7 +18,7 @@ public class AsignacionPanel extends GenericPanel {
 	private JComboBox<String> empleadoComboBox;
 	private JComboBox<String> proyectoComboBox;
 
-	private String[] nombreColumnas = { "ID", "Nombre", "Apellido", "Descripción" };
+	private String[] nombreColumnas = { "ID", "Nombre", "Apellido", "Proyecto" };
 
 	public AsignacionPanel(PanelManager panelManager) {
 		super(panelManager);

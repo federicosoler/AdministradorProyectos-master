@@ -16,19 +16,19 @@ public class ReportePanel extends GenericPanel {
 	private ReporteService reporteService;
 	private ProyectoService proyectoService;
 	private HistorialService historialService;
-	
+
 	private JComboBox<String> proyectoComboBox;
-	
+
 	private String[] nombreColumnas = { "ID", "Proyecto", "Costo Horas", "Costo Dinero", "Fecha Creación" };
 
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	public ReportePanel(PanelManager panelManager) {
 		super(panelManager);
 		reporteService = new ReporteService();
 		proyectoService = new ProyectoService();
-		historialService = new HistorialService();		
-		
+		historialService = new HistorialService();
+
 		// Configurar tabla (NORTH)
 		configurarTabla(nombreColumnas);
 
