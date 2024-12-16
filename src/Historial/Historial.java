@@ -76,10 +76,4 @@ public class Historial {
 		this.horasReales = horasReales;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Historial{" + "idHistorial=" + idHistorial + ", tarea=" + tarea + ", empleado=" + empleado
-				+ ", estado='" + estado + '\'' + ", fechaAjuste=" + fechaAjuste + ", horasReales=" + horasReales + '}';
-	}
 }

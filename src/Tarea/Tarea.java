@@ -51,10 +51,4 @@ public class Tarea {
 		this.horasEstimadas = horasEstimadas;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Tarea{" + "idTarea=" + idTarea + ", titulo='" + titulo + '\'' + ", descripcion='" + descripcion + '\''
-				+ ", horasEstimadas=" + horasEstimadas + '}';
-	}
 }

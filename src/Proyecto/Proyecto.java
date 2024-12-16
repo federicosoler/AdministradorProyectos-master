@@ -31,9 +31,4 @@ public class Proyecto {
 		this.descripcion = descripcion;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Proyecto{" + "idProyecto=" + idProyecto + ", descripcion='" + descripcion + '\'' + '}';
-	}
 }

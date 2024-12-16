@@ -14,8 +14,10 @@ public class AfiliacionPanel extends GenericPanel {
 	private AfiliacionService afiliacionService;
 	private TareaService tareaService;
 	private ProyectoService proyectoService;
+
 	private JComboBox<String> tareaComboBox;
 	private JComboBox<String> proyectoComboBox;
+	
 	private String[] nombreColumnas = { "ID", "Tarea", "Proyecto" };
 
 	public AfiliacionPanel(PanelManager panelManager) {
@@ -24,16 +26,20 @@ public class AfiliacionPanel extends GenericPanel {
 		tareaService = new TareaService();
 		proyectoService = new ProyectoService();
 
-		// Inicializar campos (CENTER)
-		setupComboBoxes();
-
 		// Configurar tabla (NORTH)
-		initializePanel(nombreColumnas);
+		configurarTabla(nombreColumnas);
+
+		// Inicializar campos (CENTER)
+		configurarComboBoxes();
+
+		// Configurar botones (SOUTH)
+		configurarBotones();
 		readAll();
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Configura los ComboBoxes de tarea y proyecto
-	private void setupComboBoxes() {
+	private void configurarComboBoxes() {
 		try {
 			// Crear etiquetas y ComboBoxes
 			JLabel tareaLabel = new JLabel("Tarea:");
@@ -71,6 +77,7 @@ public class AfiliacionPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Actualiza las tareas según el proyecto seleccionado
 	private void actualizarTareaComboBox(int idProyecto) {
 		try {
@@ -92,6 +99,7 @@ public class AfiliacionPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void readAll() {
 		tableModel.setRowCount(0);
@@ -111,6 +119,7 @@ public class AfiliacionPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void create() {
 		try {
@@ -140,6 +149,7 @@ public class AfiliacionPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void delete() {
 		try {
@@ -154,9 +164,10 @@ public class AfiliacionPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void update() {
-		// No se implementa porque no es necesario en el diseño actual.
+		// No hace falta
 	}
 
 	@Override

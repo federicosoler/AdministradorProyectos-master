@@ -2,6 +2,7 @@ package Historial;
 
 import java.util.List;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.*;
 import Main.PanelManager;
 import Utilidades.GenericPanel;
@@ -14,16 +15,17 @@ import Tarea.TareaService;
 public class HistorialPanel extends GenericPanel {
 	private HistorialService historialService;
 	private TareaService tareaService;
-	private EmpleadoService empleadoService;
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
+	private EmpleadoService empleadoService;	
+	
 	private JComboBox<String> tareaComboBox;
 	private JComboBox<String> empleadoComboBox;
 	private JComboBox<String> estadoComboBox;
-
-	private JTextField horasRealesField;
-
+	
 	private String[] nombreColumnas = { "ID", "Tarea", "Empleado", "Estado", "Fecha Ajuste", "Horas Reales" };
+
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	
+	private JTextField horasRealesField;
 
 	public HistorialPanel(PanelManager panelManager) {
 		super(panelManager);
@@ -31,9 +33,15 @@ public class HistorialPanel extends GenericPanel {
 		tareaService = new TareaService();
 		empleadoService = new EmpleadoService();
 
-		// Configurar campos y tabla
-		setupInputFields();
-		initializePanel(nombreColumnas);
+		// Configurar tabla (NORTH)
+		configurarTabla(nombreColumnas);
+
+		// Configurar ComboBoxes (CENTER)
+		configurarComboBoxes();
+
+		// Configurar botones (SOUTH)
+		configurarBotones();
+		readAll();
 
 		// Cargar datos iniciales
 		llenarTareaComboBox();
@@ -43,7 +51,8 @@ public class HistorialPanel extends GenericPanel {
 		readAll();
 	}
 
-	private void setupInputFields() {
+	// ------------------------------------------------------------------------------------------------------------------------------
+	private void configurarComboBoxes() {
 		try {
 			// Crear ComboBoxes y Campo para Horas Reales
 			tareaComboBox = new JComboBox<>();
@@ -68,6 +77,7 @@ public class HistorialPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void llenarTareaComboBox() {
 		try {
 			tareaComboBox.removeAllItems();
@@ -95,6 +105,7 @@ public class HistorialPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void readAll() {
 		tableModel.setRowCount(0);
@@ -117,6 +128,7 @@ public class HistorialPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void create() {
 		try {
@@ -152,7 +164,7 @@ public class HistorialPanel extends GenericPanel {
 
 			// Establecer estado, fecha de ajuste y horas reales
 			historial.setEstado(estadoSeleccionado);
-			historial.setFechaAjuste(new java.util.Date());
+			historial.setFechaAjuste(new Date());
 			historial.setHorasReales(
 					"FINALIZADA".equals(estadoSeleccionado) ? (int) Double.parseDouble(horasRealesField.getText()) : 0);
 
@@ -166,6 +178,7 @@ public class HistorialPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void delete() {
 		try {
@@ -180,9 +193,10 @@ public class HistorialPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void update() {
-		// Este panel no requiere actualización de registros previos.
+		// No hace falta
 	}
 
 	@Override

@@ -11,10 +11,11 @@ public class TableDefinitions {
 	public static final String ASIGNACION = "Asignacion";
 	public static final String REPORTE = "Reporte";
 
-	// Array con todos los nombres para facilitar iteración
+	// Array con los nombres de las tablas
 	public static final String[] ALL_TABLES_NAMES = { EMPLEADO, PROYECTO, TAREA, HISTORIAL, AFILIACION, ASIGNACION,
 			REPORTE };
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Columnas de las tablas
 	public static final String[] EMPLEADO_COLUMNAS = { "ID_Empleado", "Nombre", "Apellido", "Costo_Hora" };
 	public static final String[] PROYECTO_COLUMNAS = { "ID_Proyecto", "Descripcion" };
@@ -30,6 +31,7 @@ public class TableDefinitions {
 	public static final String[][] ALL_TABLES_COLUMNS = { EMPLEADO_COLUMNAS, PROYECTO_COLUMNAS, TAREA_COLUMNAS,
 			HISTORIAL_COLUMNAS, AFILIACION_COLUMNAS, ASIGNACION_COLUMNAS, REPORTE_COLUMNAS };
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Definiciones SQL de las tablas
 	public static final String EMPLEADO_SQL = "ID_Empleado INT AUTO_INCREMENT PRIMARY KEY, " + "Nombre VARCHAR(255), "
 			+ "Apellido VARCHAR(255), " + "Costo_Hora DECIMAL(10, 2)";
@@ -57,7 +59,8 @@ public class TableDefinitions {
 			+ "FOREIGN KEY (ID_Empleado) REFERENCES Empleado(ID_Empleado), "
 			+ "FOREIGN KEY (ID_Tarea) REFERENCES Tarea(ID_Tarea)";
 
-	// Array con todas las definiciones SQL
+	// Array con las definiciones SQL
 	public static final String[] ALL_TABLES_SQL = { EMPLEADO_SQL, PROYECTO_SQL, TAREA_SQL, HISTORIAL_SQL,
 			AFILIACION_SQL, ASIGNACION_SQL, REPORTE_SQL };
+	
 }

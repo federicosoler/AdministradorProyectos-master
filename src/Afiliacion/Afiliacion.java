@@ -44,9 +44,4 @@ public class Afiliacion {
 		this.proyecto = proyecto;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Afiliacion{" + "idAfiliacion=" + idAfiliacion + ", tarea=" + tarea + ", proyecto=" + proyecto + '}';
-	}
 }

@@ -76,11 +76,4 @@ public class Reporte {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Reporte{" + "idReporte=" + idReporte + ", proyecto=" + proyecto + ", historial=" + historial
-				+ ", costoHoras=" + costoHoras + ", costoDinero=" + costoDinero + ", fechaCreacion=" + fechaCreacion
-				+ '}';
-	}
 }

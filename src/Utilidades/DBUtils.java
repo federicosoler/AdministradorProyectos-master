@@ -16,20 +16,24 @@ public class DBUtils {
 			conexion.setAutoCommit(false);
 			Statement stmt = conexion.createStatement();
 
-			// Si es un SELECT, usar executeQuery y devolver ResultSet
-			if (sql.trim().toUpperCase().startsWith("SELECT")) {
+			// Si es un SELECT, uso executeQuery() que devuelve un ResultSet
+			if (sql.startsWith("SELECT")) {
 				ResultSet rs = stmt.executeQuery(sql);
 				conexion.commit();
 				return rs;
 			}
-			// Si no es SELECT, usar execute, cerrar conexión y no devolver nada
+
+			// Si no es SELECT, uso execute() que no devuelve nada y cierro la conexión
 			else {
 				stmt.execute(sql);
 				conexion.commit();
 				conexion.close();
 				return null;
 			}
+
 		} catch (SQLException e) {
+
+			// Cancelo los cambios que hice en la BD y cierro la conexión
 			try {
 				if (conexion != null) {
 					conexion.rollback();
@@ -42,6 +46,7 @@ public class DBUtils {
 		}
 	}
 
+	// Método para cerrar la conexión manualmente para sentencias que no son SELECT
 	public static void cerrarRecursos(ResultSet rs) {
 		try {
 			if (rs != null) {

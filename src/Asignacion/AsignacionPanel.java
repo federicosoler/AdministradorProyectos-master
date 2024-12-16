@@ -14,9 +14,11 @@ public class AsignacionPanel extends GenericPanel {
 	private AsignacionService asignacionService;
 	private EmpleadoService empleadoService;
 	private ProyectoService proyectoService;
-	private String[] nombreColumnas = { "ID", "Nombre", "Apellido", "Descripción" };
+	
 	private JComboBox<String> empleadoComboBox;
 	private JComboBox<String> proyectoComboBox;
+
+	private String[] nombreColumnas = { "ID", "Nombre", "Apellido", "Descripción" };
 
 	public AsignacionPanel(PanelManager panelManager) {
 		super(panelManager);
@@ -24,16 +26,20 @@ public class AsignacionPanel extends GenericPanel {
 		empleadoService = new EmpleadoService();
 		proyectoService = new ProyectoService();
 
-		// Inicializar campos (CENTER)
-		setupComboBoxes();
-
 		// Configurar tabla (NORTH)
-		initializePanel(nombreColumnas);
+		configurarTabla(nombreColumnas);
+
+		// Inicializar campos (CENTER)
+		configurarComboBoxes();
+
+		// Configurar botones (SOUTH)
+		configurarBotones();
 		readAll();
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Configura los ComboBoxes para empleado y proyecto
-	private void setupComboBoxes() {
+	private void configurarComboBoxes() {
 		try {
 			// Crear etiquetas y ComboBoxes
 			JLabel empleadoLabel = new JLabel("Empleado:");
@@ -71,8 +77,8 @@ public class AsignacionPanel extends GenericPanel {
 		}
 	}
 
-	// Actualiza dinámicamente el ComboBox de empleados según el proyecto
-	// seleccionado.
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// Actualiza dinámicamente el ComboBox de empleados según el proyecto seleccionado.
 	private void actualizarEmpleadoComboBox(int idProyecto) {
 		try {
 			empleadoComboBox.removeAllItems();
@@ -94,7 +100,7 @@ public class AsignacionPanel extends GenericPanel {
 		}
 	}
 
-	// Lee todas las asignaciones, llena la tabla y reinicia los ComboBoxes.
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void readAll() {
 		tableModel.setRowCount(0);
@@ -115,8 +121,7 @@ public class AsignacionPanel extends GenericPanel {
 		}
 	}
 
-	// Crea una nueva asignación a partir de los ComboBoxes y la guarda en la base
-	// de datos.
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void create() {
 		try {
@@ -148,7 +153,7 @@ public class AsignacionPanel extends GenericPanel {
 		}
 	}
 
-	// Elimina la asignación seleccionada en la tabla.
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void delete() {
 		try {
@@ -163,11 +168,10 @@ public class AsignacionPanel extends GenericPanel {
 		}
 	}
 
-	// Método vacío porque no se implementa la funcionalidad de actualización en
-	// este panel.
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void update() {
-		// No se implementa porque no es necesario en el diseño actual.
+		// No hace falta
 	}
 
 	@Override

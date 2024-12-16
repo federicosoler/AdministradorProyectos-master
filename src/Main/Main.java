@@ -6,20 +6,23 @@ import Utilidades.TableDefinitions;
 
 public class Main {
 	public static void main(String[] args) {
+
+		// Creo las tablas en la BD
 		try {
-			// Crear las tablas usando las definiciones de TableDefinitions
+
 			for (int i = 0; i < TableDefinitions.ALL_TABLES_NAMES.length; i++) {
 				TableManager.createTable(TableDefinitions.ALL_TABLES_NAMES[i], TableDefinitions.ALL_TABLES_SQL[i]);
 			}
+
 		} catch (SQLException e) {
 			System.err.println("Error al crear las tablas: " + e.getMessage());
 			e.printStackTrace();
-			return; // Si no se pueden crear las tablas, no hace falta iniciar la UI
-		}
-		
-		// Comentario de prueba
 
-		// Iniciar la UI
+			// Si no se pudieron crear las tablas, no inicio la UI
+			return;
+		}
+
+		// Inicio la UI (en un hilo seguro para Swing)
 		SwingUtilities.invokeLater(() -> {
 			new PanelManager();
 		});

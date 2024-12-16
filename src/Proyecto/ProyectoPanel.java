@@ -16,13 +16,14 @@ public class ProyectoPanel extends GenericPanel {
 		super(panelManager);
 		proyectoService = new ProyectoService();
 
-		// Inicializar campos (CENTER)
-		campos = setupInputFields(nombreColumnas);
+		// Configurar tabla (NORTH)
+		configurarTabla(nombreColumnas);
+		
+		// Configurar campos (CENTER)
+		campos = configurarCamposEntrada(nombreColumnas);
 
-		// Configurar tabla y botones (NORTH)
-		initializePanel(nombreColumnas);
-
-		// Cargar datos
+		// Configurar botones (SOUTH)
+		configurarBotones();
 		readAll();
 	}
 

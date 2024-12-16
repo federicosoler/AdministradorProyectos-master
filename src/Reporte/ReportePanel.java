@@ -16,21 +16,28 @@ public class ReportePanel extends GenericPanel {
 	private ReporteService reporteService;
 	private ProyectoService proyectoService;
 	private HistorialService historialService;
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
+	
 	private JComboBox<String> proyectoComboBox;
-
+	
 	private String[] nombreColumnas = { "ID", "Proyecto", "Costo Horas", "Costo Dinero", "Fecha Creación" };
 
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	
 	public ReportePanel(PanelManager panelManager) {
 		super(panelManager);
 		reporteService = new ReporteService();
 		proyectoService = new ProyectoService();
-		historialService = new HistorialService();
+		historialService = new HistorialService();		
+		
+		// Configurar tabla (NORTH)
+		configurarTabla(nombreColumnas);
 
-		// Configurar campos y tabla
-		setupInputFields();
-		initializePanel(nombreColumnas);
+		// Configurar ComboBoxes (CENTER)
+		configurarComboBoxes();
+
+		// Configurar botones (SOUTH)
+		configurarBotones();
+		readAll();
 
 		// Cargar datos iniciales
 		llenarProyectoComboBox();
@@ -38,7 +45,8 @@ public class ReportePanel extends GenericPanel {
 		readAll();
 	}
 
-	private void setupInputFields() {
+	// ------------------------------------------------------------------------------------------------------------------------------
+	private void configurarComboBoxes() {
 		try {
 			proyectoComboBox = new JComboBox<>();
 
@@ -48,10 +56,11 @@ public class ReportePanel extends GenericPanel {
 			inputPanel.revalidate();
 			inputPanel.repaint();
 		} catch (Exception e) {
-			mostrarError("Error al configurar los campos de entrada", e);
+			mostrarError("Error al configurar los ComboBoxes", e);
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void llenarProyectoComboBox() {
 		try {
 			proyectoComboBox.removeAllItems();
@@ -65,6 +74,7 @@ public class ReportePanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void readAll() {
 		tableModel.setRowCount(0);
@@ -83,6 +93,7 @@ public class ReportePanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void create() {
 		try {
@@ -126,7 +137,7 @@ public class ReportePanel extends GenericPanel {
 			Proyecto proyecto = new Proyecto();
 			proyecto.setIdProyecto(idProyecto);
 			reporte.setProyecto(proyecto);
-			reporte.setHistorial(historialRelacionado); // Asignar el historial relacionado
+			reporte.setHistorial(historialRelacionado);
 			reporte.setCostoHoras(costoHoras);
 			reporte.setCostoDinero(costoDinero);
 			reporte.setFechaCreacion(new Date());
@@ -141,6 +152,7 @@ public class ReportePanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	@Override
 	protected void delete() {
 		try {
@@ -155,11 +167,14 @@ public class ReportePanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// No hace falta
 	@Override
 	protected void update() {
-		// No se implementa la actualización de reportes
+		// No hace falta
 	}
 
+	// No hace falta
 	@Override
 	protected JTextField[] getCampos() {
 		return new JTextField[0];

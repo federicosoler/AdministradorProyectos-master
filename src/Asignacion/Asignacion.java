@@ -44,10 +44,4 @@ public class Asignacion {
 		this.proyecto = proyecto;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Asignacion{" + "idAsignacion=" + idAsignacion + ", empleado=" + empleado + ", proyecto=" + proyecto
-				+ '}';
-	}
 }

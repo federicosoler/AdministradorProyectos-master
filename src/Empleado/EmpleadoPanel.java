@@ -6,6 +6,7 @@ import Main.PanelManager;
 import Utilidades.GenericPanel;
 import Utilidades.TableDefinitions;
 import Exceptions.ServiceException;
+import Utilidades.Validador;
 
 public class EmpleadoPanel extends GenericPanel {
 	private EmpleadoService empleadoService;
@@ -16,11 +17,14 @@ public class EmpleadoPanel extends GenericPanel {
 		super(panelManager);
 		empleadoService = new EmpleadoService();
 
-		// Inicializar campos (CENTER)
-		campos = setupInputFields(nombreColumnas);
-
 		// Configurar tabla (NORTH)
-		initializePanel(nombreColumnas);
+		configurarTabla(nombreColumnas);
+		
+		// Configurar campos (CENTER)
+		campos = configurarCamposEntrada(nombreColumnas);
+
+		// Configurar botones (SOUTH)
+		configurarBotones();
 		readAll();
 	}
 
@@ -30,6 +34,7 @@ public class EmpleadoPanel extends GenericPanel {
 		return campos;
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// cRud
 	@Override
 	protected void readAll() {
@@ -46,10 +51,11 @@ public class EmpleadoPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Crud
 	@Override
 	protected void create() {
-		if (!esNumeroValido(campos[2].getText(), "costo por hora")) {
+		if (!Validador.esNumeroValido(campos[2].getText(), "costo por hora")) {
 			return;
 		}
 
@@ -67,10 +73,11 @@ public class EmpleadoPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// crUd
 	@Override
 	protected void update() {
-		if (!esNumeroValido(campos[2].getText(), "costo por hora")) {
+		if (!Validador.esNumeroValido(campos[2].getText(), "costo por hora")) {
 			return;
 		}
 
@@ -91,6 +98,7 @@ public class EmpleadoPanel extends GenericPanel {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// cruD
 	@Override
 	protected void delete() {

@@ -51,10 +51,4 @@ public class Empleado {
 		this.costoHora = costoHora;
 	}
 
-	// Método toString
-	@Override
-	public String toString() {
-		return "Empleado{" + "idEmpleado=" + idEmpleado + ", nombre='" + nombre + '\'' + ", apellido='" + apellido
-				+ '\'' + ", costoHora=" + costoHora + '}';
-	}
 }
