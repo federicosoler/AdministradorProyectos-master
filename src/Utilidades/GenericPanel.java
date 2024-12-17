@@ -128,8 +128,7 @@ public abstract class GenericPanel extends JPanel {
 				}
 			}
 		} catch (Exception e) {
-			System.err.println("Error al cargar datos en los campos: " + e.getMessage());
-			e.printStackTrace();
+			mostrarError("Error al cargar datos en los campos", e);
 		}
 	}
 

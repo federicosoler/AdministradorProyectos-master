@@ -22,13 +22,24 @@ public class PanelManager extends JFrame {
         setVisible(true);
     }
 
-    public JPanel crearPanel(String nombrePanel) {
+    // Crear un nuevo panel por reflexión y devolverlo (Ejemplo: "Empleado")
+    public JPanel crearPanel(String nombrePanel) {  
         if (!mapaPaneles.containsKey(nombrePanel)) {
             try {
+
+                // Armo un String con la clase y paquete específicos "Empleado.EmpleadoPanel"
                 String className = nombrePanel + "." + nombrePanel + "Panel";
-                Class<?> panelClass = Class.forName(className);
-                JPanel panel = (JPanel) panelClass.getConstructor(PanelManager.class).newInstance(this);
+
+                // REFLEXIÓN -> Configurar Class<?> como tipo EmpleadoPanel
+                Class<?> panelClass = Class.forName(className); 
+
+                // UPCASTING -> Trato EmpleadoPanel (clase hija) como JPanel (clase padre) para guardarlo en el mapa y correr mostrarPanel()
+                // POLIMORFISMO -> Sobrecarga del constructor base EmpleadoPanel() por EmpleadoPanel(PanelManager panelManager)                
+                JPanel panel = (JPanel) panelClass.getConstructor(PanelManager.class).newInstance(this); 
+
+                // Guardar el nuevo JPanel en el mapa
                 mapaPaneles.put(nombrePanel, panel);
+            
             } catch (Exception ex) {
                 System.out.println("No se pudo crear el panel: " + nombrePanel);
             }
