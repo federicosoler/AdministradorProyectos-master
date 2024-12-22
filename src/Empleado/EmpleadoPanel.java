@@ -14,6 +14,7 @@ public class EmpleadoPanel extends GenericPanel {
 	private JTextField[] campos;
 
 	public EmpleadoPanel(PanelManager panelManager) {
+		// Llamo explícitamente al constructor sobreescrito de la clase padre (GenericPanel) que recibe parámetro PanelManager
 		super(panelManager);
 		empleadoService = new EmpleadoService();
 

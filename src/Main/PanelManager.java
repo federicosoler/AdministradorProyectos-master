@@ -33,8 +33,7 @@ public class PanelManager extends JFrame {
                 // REFLEXIÓN -> Configurar Class<?> como tipo EmpleadoPanel
                 Class<?> panelClass = Class.forName(className); 
 
-                // UPCASTING -> Trato EmpleadoPanel (clase hija) como JPanel (clase padre) para guardarlo en el mapa y correr mostrarPanel()
-                // POLIMORFISMO -> Sobrecarga del constructor base EmpleadoPanel() por EmpleadoPanel(PanelManager panelManager)                
+                // UPCASTING -> Trato EmpleadoPanel (clase hija) como JPanel (clase padre) para guardarlo en el mapa y correr mostrarPanel()              
                 JPanel panel = (JPanel) panelClass.getConstructor(PanelManager.class).newInstance(this); 
 
                 // Guardar el nuevo JPanel en el mapa

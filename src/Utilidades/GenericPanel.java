@@ -62,7 +62,7 @@ public abstract class GenericPanel extends JPanel {
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// Método para configurar los campos de entrada (CENTER)
 	protected JTextField[] configurarCamposEntrada(String[] nombreColumnas) {
-		JTextField[] campos = new JTextField[nombreColumnas.length - 1];
+		JTextField[] campos = new JTextField[nombreColumnas.length - 1]; // Excluyo la columna del ID
 		for (int i = 1; i < nombreColumnas.length; i++) {
 			campos[i - 1] = new JTextField(20);
 			inputPanel.add(new JLabel(nombreColumnas[i] + ":"));
@@ -90,9 +90,8 @@ public abstract class GenericPanel extends JPanel {
 
 		// Botón ELIMINAR (cruD)
 		JButton eliminarButton = new JButton("Eliminar");
-		eliminarButton.addActionListener(e -> {
-			int selectedRow = table.getSelectedRow();
-			if (selectedRow != -1) {
+		eliminarButton.addActionListener(e -> {			
+			if (table.getSelectedRow() != -1) {
 				int confirm = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea eliminar este registro?",
 						"Confirmar eliminación", JOptionPane.YES_NO_OPTION);
 				if (confirm == JOptionPane.YES_OPTION) {
@@ -123,7 +122,7 @@ public abstract class GenericPanel extends JPanel {
 
 			for (int i = 0; i < campos.length; i++) {
 				if (campos[i] != null && i + 1 < tableModel.getColumnCount()) {
-					Object value = tableModel.getValueAt(selectedRow, i + 1); // i + 1 para saltar la columna ID
+					Object value = tableModel.getValueAt(selectedRow, i + 1); // Excluyo la columna del ID
 					campos[i].setText(value != null ? String.valueOf(value) : "");
 				}
 			}
@@ -138,7 +137,7 @@ public abstract class GenericPanel extends JPanel {
 		JOptionPane.showMessageDialog(this, mensaje + ": " + mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
 	}
 
-	// Método para refrescar el panel
+	// Método para limpiar campos pero no los labels (CENTER) y deselecciona y refresca la tabla (NORTH)
 	protected void refresh() {
 		for (Component component : inputPanel.getComponents()) {
 			if (component instanceof JTextField) {

@@ -16,6 +16,7 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		this.idColumnName = idColumnName;
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// Crud
 	@Override
 	public void create(T entity) throws ObjetoDuplicadoException, DAOException {
@@ -30,6 +31,7 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// cRud
 	@Override
 	public T read(int id) throws DAOException {
@@ -48,6 +50,7 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// cRud
 	@Override
 	public List<T> readAll() throws DAOException {
@@ -69,6 +72,7 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// crUd
 	@Override
 	public void update(T entity) throws DAOException {
@@ -80,6 +84,7 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		}
 	}
 
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// cruD
 	@Override
 	public void delete(int id) throws DAOException {
@@ -91,7 +96,8 @@ public abstract class GenericH2Impl<T> implements GenericDAO<T> {
 		}
 	}
 
-	// Métodos abstractos que deben ser implementados por las subclases
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// Métodos abstractos que sí o sí deben ser implementados por las subclases
 	protected abstract String buildInsertSQL(T entity);
 
 	protected abstract String buildUpdateSQL(T entity);

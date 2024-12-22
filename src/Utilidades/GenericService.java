@@ -5,6 +5,7 @@ import Exceptions.ServiceException;
 import Exceptions.DAOException;
 import Exceptions.ObjetoDuplicadoException;
 
+// Clase abstracta aunque no tenga métodos abstractos para evitar que se instancie, es una plantilla nada más
 public abstract class GenericService<T> {
 	protected final GenericDAO<T> dao;
 
